@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eunsang Lee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ffffff;
+    --ink:#1c2b3a;
+    --ink-soft:#5a6b7d;
+    --line:#e3e9f0;
+    --blue:#2f5fa8;
+    --blue-pale:#eef3fb;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Noto Serif', serif;
+    font-size:16px;
+    line-height:1.75;
+  }
+  a{ color:var(--blue); text-decoration:none; border-bottom:1px solid rgba(47,95,168,0.35); }
+  a:hover{ border-bottom-color:var(--blue); }
+
+  .wrap{
+    max-width:700px;
+    margin:0 auto;
+    padding:64px 24px 90px;
+  }
+
+  h1{
+    font-weight:600;
+    font-size:34px;
+    margin:0 0 18px;
+    color:var(--ink);
+  }
+
+  .intro{ overflow:auto; margin-bottom:8px; }
+  .intro img{
+    float:right;
+    width:130px;
+    height:130px;
+    object-fit:cover;
+    border-radius:4px;
+    margin:4px 0 16px 24px;
+    border:1px solid var(--line);
+    background:var(--blue-pale);
+  }
+  .intro p{ margin:0 0 14px; color:var(--ink); }
+  .intro p:last-of-type{ margin-bottom:0; }
+
+  .links{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:18px;
+  }
+  .links a{ border-bottom:none; }
+  .links a:hover{ border-bottom:1px solid var(--blue); }
+  .links .sep{ color:var(--line); margin:0 6px; }
+
+  section{
+    margin-top:54px;
+    clear:both;
+  }
+  h2{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--blue);
+    border-bottom:1px solid var(--line);
+    padding-bottom:10px;
+    margin-bottom:20px;
+    font-weight:500;
+  }
+
+  /* news */
+  .news-list{ list-style:none; margin:0; padding:0; font-size:14.5px; color:var(--ink); }
+  .news-list li{ margin-bottom:10px; padding-left:20px; position:relative; }
+  .news-list li::before{
+    content:"—";
+    position:absolute; left:0; color:var(--blue);
+  }
+  .news-list .date{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-right:6px;
+  }
+
+  /* awards - plain list */
+  .award-list{ list-style:none; margin:0; padding:0; font-size:14.5px; color:var(--ink); }
+  .award-list li{ display:grid; grid-template-columns:100px 1fr; gap:14px; padding:10px 0; border-bottom:1px solid var(--line); }
+  .award-list li:last-child{ border-bottom:none; }
+  .award-list .date{ font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--ink-soft); }
+  .award-list .title{ font-weight:600; color:var(--ink); }
+  .award-list .org{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+
+  /* publications / projects */
+  .pub{
+    display:grid;
+    grid-template-columns:160px 1fr;
+    gap:20px;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .pub:last-child{ border-bottom:none; }
+  .pub img{
+    width:160px;
+    height:100px;
+    object-fit:contain;
+    object-position:center;
+    border:1px solid var(--line);
+    border-radius:4px;
+    background:#fff;
+    padding:4px;
+    display:block;
+  }
+  .pub .venue{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    color:var(--blue);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin-bottom:6px;
+  }
+  .pub h3{
+    font-size:16.5px;
+    font-weight:600;
+    margin:0 0 6px;
+    line-height:1.4;
+  }
+  .pub .authors{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+  }
+  .pub .authors b{ color:var(--ink); font-weight:600; }
+  .pub .pub-links{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+  }
+  .pub .pub-links a{ margin-right:14px; }
+
+  /* skills, plain text */
+  .skills p{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin:0 0 10px;
+  }
+  .skills b{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    display:inline-block;
+    width:110px;
+    font-weight:500;
+  }
+
+  footer{
+    margin-top:70px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    border-top:1px solid var(--line);
+    padding-top:18px;
+  }
+
+  @media (max-width:520px){
+    .wrap{ padding:44px 20px 70px; }
+    .intro img{ float:none; display:block; margin:0 0 18px; }
+    .pub{ grid-template-columns:1fr; }
+    .pub img{ width:100%; height:160px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <h1>Eunsang Lee</h1>
+
+  <div class="intro">
+    <img src="assets/profile.jpg" alt="Profile photo of Eunsang Lee">
+    <p>I am an M.S. student in Artificial Intelligence at Ewha Womans University, where I also completed my B.E. in the same department. My work focuses on multimodal learning, generation, and MLLMs.</p>
+    <p>Feel free to reach out if you'd like to discuss potential collaborations — a full CV is linked below.</p>
+    <div class="links">
+      <a href="mailto:leeeunsang@ewhain.net">Email</a><span class="sep">/</span><a href="https://github.com/yourgithub" target="_blank">GitHub</a><span class="sep">/</span><a href="https://linkedin.com/in/yourlinkedin" target="_blank">LinkedIn</a><span class="sep">/</span><a href="assets/Eunsang_Lee_CV.pdf" target="_blank">CV</a>
+    </div>
+  </div>
+
+  <section id="news">
+    <h2>News</h2>
+    <ul class="news-list">
+      <li><span class="date">2026.06</span>Our paper "Referee: Reference-aware Audiovisual Deepfake Detection" was accepted to INTERSPEECH 2026!</li>
+      <li><span class="date">2026.03</span>Started my M.S. program in Artificial Intelligence at Ewha Womans University.</li>
+      <li><span class="date">2025.10</span>Preprint of "Referee: Reference-aware Audiovisual Deepfake Detection" released.</li>
+      <li><span class="date">2024.05</span>Won 1st Place at the Generative AI Ideathon, hosted by Wrtn Technologies & Ewha Womans University.</li>
+    </ul>
+  </section>
+
+  <section id="awards">
+    <h2>Awards</h2>
+    <ul class="award-list">
+      <li>
+        <span class="date">2024.05</span>
+        <div><div class="title">1st Place — Generative AI Ideathon</div><div class="org">Hosted by Wrtn Technologies & Ewha Womans University</div></div>
+      </li>
+      <li>
+        <span class="date">2024.11</span>
+        <div><div class="title">Excellence Award — AI University Programming Competition</div><div class="org">College of Artificial Intelligence, Ewha Womans University</div></div>
+      </li>
+      <li>
+        <span class="date">2024.02</span>
+        <div><div class="title">17th Place — SUAPC 2024 Winter (Top team in Ewha)</div><div class="org">Collegiate algorithm competition organized by ICPC Sinchon · 49 teams participated</div></div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <div class="pub">
+      <img src="assets/paper_a.png" alt="Referee paper thumbnail">
+      <div>
+        <div class="venue">INTERSPEECH 2026</div>
+        <h3>Referee: Reference-aware Audiovisual Deepfake Detection</h3>
+        <div class="authors">Hyemin Boo, <b>Eunsang Lee</b>, Jiyoung Lee†</div>
+        <div class="pub-links">
+          <a href="https://arxiv.org/abs/2510.27475" target="_blank">Paper</a><a href="https://github.com/ewha-mmai/referee" target="_blank">Code</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>© 2026 Eunsang Lee. Last updated June 2026.</footer>
+
+</div>
+
+</body>
+</html>
